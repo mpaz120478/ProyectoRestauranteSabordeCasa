@@ -1,0 +1,10 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+<ul class="navbar-nav">
+    <li class="nav-item">
+        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/" title="Manage"> ¡Hola @User.Identity?.Name!</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Logout">Cerrar Sesión</a>
+    </li>
+</ul>

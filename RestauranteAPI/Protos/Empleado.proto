@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option csharp_namespace = "RestauranteAPI";
+package empleados;
+
+service Empleados {
+	rpc Listar(EmptyEmp) returns(Empleadoss);
+	rpc Buscar(EmpleadoId) returns(Empleado);
+	rpc Agregar(Empleado) returns(RespuestaEmp);
+	rpc Editar(Empleado) returns(RespuestaEmp);
+	rpc Eliminar(EmpleadoId) returns(RespuestaEmp);
+}
+
+message EmptyEmp {}
+
+message EmpleadoId {
+	string Id = 1;
+}
+
+message Empleado {
+	string IdEmp = 1;
+	string IdCargo = 2;
+	string DniEmp = 3;
+	string ApellidoEmp = 4;
+	string NombreEmp = 5;
+	string TelefonoEmp = 6;
+	string InicioContratoEmp = 7;
+	string SueldoEmp = 8;
+	string ActivoEmp = 9;
+	string NombreCargo = 10;
+}
+
+message Empleadoss {
+	repeated Empleado Item = 1;
+}
+
+message RespuestaEmp {
+	string Mensaje = 1;
+}

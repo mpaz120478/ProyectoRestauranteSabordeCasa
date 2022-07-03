@@ -1,0 +1,83 @@
+﻿@model IEnumerable<ProyectoRestauranteSabordeCasa.Models.EmpleadoModel>
+
+@{
+    ViewData["Title"] = "Listado";
+}
+
+<div class="card bg-light border border-succes">
+    <div class="card-header">
+        <h4 class="text-center fw-bold text-white fst-italic border py-2" style="background-color: #117A65">Listado de Empleados</h4>
+    </div>
+    <div class="card-body">
+        <a asp-action="Agregar" class="btn btn-primary btn-sm"><i class="bi bi-person-plus"></i> Nuevo Empleado</a>
+        <table class="table table-bordered border-success border border-2 table-hover" id="tableEmpleado">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DniEmp)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ApellidoEmp)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NombreEmp)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InicioContrato)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NombreCargo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Activo)
+                    </th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DniEmp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ApellidoEmp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombreEmp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InicioContrato)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombreCargo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Activo)
+                    </td>
+                    <td>
+                        <a asp-area="" asp-controller="Empleado" asp-action="Editar" class="btn btn-success btn-sm" asp-route-IdEmp="@item.IdEmp"><i class="bi bi-pencil-square"></i></a>
+                        <a asp-area="" asp-controller="Empleado" asp-action="Eliminar" class="btn btn-danger btn-sm" asp-route-IdEmp="@item.IdEmp"><i class="bi bi-trash-fill"></i></a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Scripts {
+    <script>
+$(document).ready(function() {
+    $('#tableEmpleado').DataTable();
+});
+    </script>
+<script>
+    $(document).ready(function() {
+    $('#tableEmpleado').DataTable({
+        "language": {
+            "url": "https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json"
+        };
+    });
+});
+</script>
+}

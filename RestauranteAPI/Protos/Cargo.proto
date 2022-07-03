@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option csharp_namespace = "RestauranteAPI";
+
+package cargos;
+
+service Cargos {
+	rpc Listar(EmptyCar) returns(Cargoss);
+	rpc Buscar(CargoId) returns(Cargo);
+	rpc Agregar(Cargo) returns(RespuestaCar);
+	rpc Editar(Cargo) returns(RespuestaCar);
+	rpc Eliminar(CargoId) returns(RespuestaCar);
+}
+
+message EmptyCar {}
+
+message CargoId {
+	string Id = 1;
+}
+
+message Cargo {
+	string IdCargo = 1;
+	string NombreCargo = 2;
+	string RolCargo = 3;
+}
+
+message Cargoss {
+	repeated Cargo Item = 1;
+}
+
+message RespuestaCar {
+	string Mensaje = 1;
+}

@@ -1,0 +1,17 @@
+﻿body {
+    background-color: whitesmoke
+
+}
+
+.logo {
+    height: 200px;
+    width: auto;
+}
+.logo1 {
+    height: 100px;
+    width: auto;
+}
+
+.nav-link {
+    color:white !important;
+}

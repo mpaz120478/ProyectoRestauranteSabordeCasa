@@ -1,0 +1,59 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ProyectoRestauranteSabordeCasa</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ProyectoRestauranteSabordeCasa.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="~/css/Estilos.css" />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="card-shadow">
+                        <div class="card-title text-center border-bottom">
+                            <img src="../img/logosaborcasa.png" class="logo" alt="Logo">
+                            <h4 class="p-2 text-primary">Control de Acceso al Sistema</h4>
+                        </div>
+                        <div class="card-body">
+                            <form asp-action="Inicio" method="post">
+                                <div class="form-outline mb-2">
+                                    <input type="text" name="NombreUsuario" class="form-control form-control-lg bg-transparent " placeholder="Nombre de usuario" autocomplete="off" required />
+                                </div>
+                                <div class="form-outline mb-2">
+                                    <input type="password" name="ClaveUsuario" class="form-control form-control-lg bg-transparent" placeholder="Ingrese su contraseña" required />
+                                </div>
+                                    @if (ViewData["@Mensaje"] != null)
+                                    {
+                                        <div class="alert alert-danger" role="alert">
+                                            @ViewData["@Mensaje"]
+                                        </div>
+                                    }
+                               <div class="d-flex justify-content-center text-center mt-3">
+                                   <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                               </div>
+                               <div class="d-flex justify-content-center" >
+                                   <p class="small fw-bold mt-2 pt-1 mb-0">No tienes cuenta de usuario? <a href="@Url.Action("Registrar", "Login")" class="link-danger">Regístrate</a></p>
+                               </div>
+                           </form>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+</body>
+</html>

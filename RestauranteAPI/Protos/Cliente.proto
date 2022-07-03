@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option csharp_namespace = "RestauranteAPI";
+
+package clientes;
+
+service Clientes {
+	rpc Listar(EmptyCli) returns(Clientess);
+	rpc Buscar(ClienteId) returns(Cliente);
+	rpc Agregar(Cliente) returns(RespuestaCli);
+	rpc Editar(Cliente) returns(RespuestaCli);
+	rpc Eliminar(ClienteId) returns(RespuestaCli);
+}
+
+message EmptyCli {}
+
+message ClienteId {
+	string Id = 1;
+}
+
+message Cliente {
+	string IdCliente = 1;
+	string DniCliente = 2;
+	string DatosCliente = 3;
+}
+
+message Clientess {
+	repeated Cliente Item = 1;
+}
+
+message RespuestaCli {
+	string Mensaje = 1;
+}

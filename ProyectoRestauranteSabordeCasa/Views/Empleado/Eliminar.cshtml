@@ -1,0 +1,57 @@
+﻿@model ProyectoRestauranteSabordeCasa.Models.EmpleadoModel
+@{
+    ViewData["Title"] = "Eliminar";
+}
+
+<div class="container bg-light my-2 py-2 border border-1 border-success"><h3 class="text-center fw-bold text-white fst-italic border py-2" style="background-color: #117A65">Eliminar Datos del Empleado</h3>
+        <form asp-action="Eliminar" method="post">
+          <input type="hidden" asp-for="IdEmp"/>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group row my-2">
+                <div class="col-2">
+                    <label asp-for="IdEmp" class="control-label">Código</label>
+                    <input asp-for="IdEmp" class="form-control" type="number" disabled/>
+                </div>
+                <div class="col-2">
+                    <label asp-for="DniEmp" class="control-label">DNI</label>
+                    <input asp-for="DniEmp" class="form-control" type="number" disabled/>
+                </div>
+                <div class="col">
+                    <label asp-for="ApellidoEmp" class="control-label">Apellidos</label>
+                    <input asp-for="ApellidoEmp" class="form-control" type="text" disabled/>
+                </div>
+                <div class="col">
+                    <label asp-for="NombreEmp" class="control-label">Nombres</label>
+                    <input asp-for="NombreEmp" class="form-control" type="text" disabled/>
+                </div>
+            </div>
+            <div class="form-group row my-2">
+                <div class="col-2">
+                    <label asp-for="Telefono" class="control-label">Telefono</label>
+                    <input asp-for="Telefono" class="form-control" type="tel" disabled/>
+                </div>
+                <div class="col-2">
+                    <label asp-for="InicioContrato" class="control-label">Inicio Contrato</label>
+                    <input asp-for="InicioContrato" class="form-control" type="date" disabled/>
+                </div>
+                <div class="col-2">
+                    <label asp-for="SueldoEmp" class="control-label">Sueldo</label>
+                    <input asp-for="SueldoEmp" class="form-control" type="number" disabled/>
+                </div>
+                <div class="col-2">
+                    <label asp-for="IdCargo" class="control-label">Cargo</label><br />
+                    <select asp-for="IdCargo" asp-items="@ViewBag.cargos" class="form-select" disabled>
+                        <option value="-1">Seleccione:</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row my-2">
+                <div class="col-2">
+                    <input type="submit" value="Eliminar" class="btn btn-danger" />
+                </div>
+                <div class="col-2">
+                    <a asp-action="Listado" class="btn btn-warning">Regresar al Listado</a>
+                </div>
+            </div>
+       </form>
+</div>

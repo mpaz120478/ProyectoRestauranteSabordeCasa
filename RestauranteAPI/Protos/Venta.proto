@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option csharp_namespace = "RestauranteAPI";
+package ventas;
+
+service Ventas {
+	rpc Listar(EmptyVen) returns(Ventass);
+	rpc Buscar(VentaId) returns(Venta);
+	rpc Agregar(Venta) returns(RespuestaVen);
+	rpc Editar(Venta) returns(RespuestaVen);
+	rpc Eliminar(VentaId) returns(RespuestaVen);
+}
+
+message EmptyVen {}
+
+message VentaId {
+	string Id = 1;
+}
+
+message Venta {
+	string IdVenta = 1;
+	string IdCliente = 2;
+	string IdPedido = 3;
+	string IdUsuario = 4;
+	string PrecioBase = 5;
+	string PrecioIgv = 6;
+	string PrecioTotal = 7;
+	string DniCliente = 8;
+	string DatosCliente = 9;
+}
+
+message Ventass {
+	repeated Venta Item = 1;
+}
+
+message RespuestaVen {
+	string Mensaje = 1;
+}

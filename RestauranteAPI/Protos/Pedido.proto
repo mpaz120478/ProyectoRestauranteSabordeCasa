@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option csharp_namespace = "RestauranteAPI";
+
+package pedidos;
+
+service Pedidos {
+	rpc Listar(EmptyPed) returns(Pedidoss);
+	rpc Buscar(PedidoId) returns(Pedido);
+	rpc Agregar(Pedido) returns(RespuestaPed);
+	rpc Editar(Pedido) returns(RespuestaPed);
+	rpc Eliminar(PedidoId) returns(RespuestaPed);
+	rpc ListarPorUsuario(PedidoId) returns(Pedidoss);
+}
+
+message EmptyPed {}
+
+message PedidoId {
+	string Id = 1;
+}
+
+message Pedido {
+	string IdPedido = 1;
+	string IdUsuario = 2;
+	string MesaPedido = 3;
+	string FechaPedido = 4;
+	string Pendiente = 5;
+}
+
+message Pedidoss {
+	repeated Pedido Item = 1;
+}
+
+message RespuestaPed {
+	string Mensaje = 1;
+}

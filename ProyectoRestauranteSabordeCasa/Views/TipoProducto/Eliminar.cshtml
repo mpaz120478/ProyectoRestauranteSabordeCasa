@@ -1,0 +1,29 @@
+﻿@model ProyectoRestauranteSabordeCasa.Models.TipoProductoModel
+@{
+    ViewData["Title"] = "Eliminar";
+}
+
+<div class="container bg-light my-2 py-2 border border-1 border-success"><h3 class="text-center fw-bold text-white fst-italic border py-2" style="background-color: #117A65">Eliminar Datos del Tipo Producto</h3>
+        <form asp-action="Eliminar" method="post">
+          <input type="hidden" asp-for="IdTipoProd"/>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group row my-2">
+                <div class="col-2">
+                    <label asp-for="IdTipoProd" class="control-label">Código</label>
+                    <input asp-for="IdTipoProd" class="form-control" type="number" disabled/>
+                </div>
+                <div class="col-2">
+                    <label asp-for="NombreTipoProd" class="control-label"></label>
+                    <input asp-for="NombreTipoProd" class="form-control" type="text" disabled/>
+                </div>
+            </div>
+            <div class="form-group row my-2">
+                <div class="col-2">
+                    <input type="submit" value="Eliminar" class="btn btn-danger" />
+                </div>
+                <div class="col-2">
+                    <a asp-action="Listado" class="btn btn-warning">Regresar al Listado</a>
+                </div>
+            </div>
+       </form>
+</div>

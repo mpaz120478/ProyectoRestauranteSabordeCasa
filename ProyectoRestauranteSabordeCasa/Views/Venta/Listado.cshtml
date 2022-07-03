@@ -1,0 +1,76 @@
+﻿@model IEnumerable<ProyectoRestauranteSabordeCasa.Models.VentaModel>
+
+@{
+    ViewData["Title"] = "Listado";
+}
+
+<div class="card bg-light border border-succes">
+    <div class="card-header">
+        <h4 class="text-center fw-bold text-white fst-italic border py-2" style="background-color: #117A65">Listado de Pedidos</h4>
+    </div>
+    <div class="card-body">        
+        <table class="table table-bordered border-success border border-2 table-hover" id="tableTipoProducto">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DniCliente)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DatosCliente)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PrecioBase)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PrecioIgv)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PrecioTotal)
+                    </th>
+                    @*<th>Acciones</th>*@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {
+                    <tr>
+                        <td>
+                            @item.DniCliente
+                        </td>
+                        <td>
+                            @item.DatosCliente
+                        </td>
+                        <td>
+                            @item.PrecioBase
+                        </td>
+                        <td>
+                            @item.PrecioIgv
+                        </td>
+                        <td>
+                            @item.PrecioTotal
+                        </td>
+                        @*<td>
+                            <a asp-area="" asp-controller="Venta" asp-action="Editar" class="btn btn-success btn-sm" asp-route-Id="@item.IdVenta"><i class="bi bi-pencil-square"></i></a>
+                            <a asp-area="" asp-controller="Venta" asp-action="Eliminar" class="btn btn-danger btn-sm" asp-route-Id="@item.IdVenta"><i class="bi bi-trash-fill"></i></a>
+                        </td>*@
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Scripts {
+    <script>
+$(document).ready(function() {
+    $('#tableTipoProducto').DataTable();
+});
+    </script>
+<script>
+    $(document).ready(function() {
+    $('#tableTipoProducto').DataTable({
+        "language": {
+            "url": "https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json"
+        };
+    });
+});
+</script>
+}

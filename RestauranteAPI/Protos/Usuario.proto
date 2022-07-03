@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option csharp_namespace = "RestauranteAPI";
+package usuarios;
+
+service Usuarios {
+	rpc Listar(EmptyUsu) returns(Usuarioss);
+	rpc Buscar(UsuarioId) returns(Usuario);
+	rpc Agregar(Usuario) returns(RespuestaUsu);
+	rpc Editar(Usuario) returns(RespuestaUsu);
+	rpc Eliminar(UsuarioId) returns(RespuestaUsu);
+}
+
+message EmptyUsu {}
+
+message UsuarioId {
+	string Id = 1;
+}
+
+message Usuario {
+	string idUsuario = 1;
+	string idEmp = 2;
+	string NombreUsuario = 3;
+	string RolCargo = 4;	
+	string Dni = 5;
+}
+
+message Usuarioss {
+	repeated Usuario Item = 1;
+}
+
+message RespuestaUsu {
+	string Mensaje = 1;
+}

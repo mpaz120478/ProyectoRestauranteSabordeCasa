@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option csharp_namespace = "RestauranteAPI";
+
+package detallepedidos;
+
+service DetallePedidos {
+	rpc Listar(EmptyDet) returns(DetallePedidoss);
+	rpc Buscar(DetallePedidoId) returns(DetallePedido);
+	rpc Agregar(DetallePedido) returns(RespuestaDet);
+	rpc Editar(DetallePedido) returns(RespuestaDet);
+	rpc Eliminar(DetallePedidoId) returns(RespuestaDet);
+	rpc ListarPorPedido(DetallePedidoId) returns(DetallePedidoss);
+}
+
+message EmptyDet {}
+
+message DetallePedidoId {
+	string Id = 1;
+}
+
+message DetallePedido {
+	string IdDetallePed = 1;
+	string IdPedido = 2;
+	string IdProd = 3;
+	string Cantidad = 4;
+	string Observacion = 5;
+	string NombreProd = 6;
+}
+
+message DetallePedidoss {
+	repeated DetallePedido Item = 1;
+}
+
+message RespuestaDet {
+	string Mensaje = 1;
+}

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ProyectoRestauranteSabordeCasa.Models.DetallePedidoModel>
+
+@{
+    ViewData["Title"] = "Listado";
+}
+
+<div class="card bg-light border border-succes">
+    <div class="card-header">
+        <h4 class="text-center fw-bold text-white fst-italic border py-2" style="background-color: #117A65">Detalle Pedido</h4>
+    </div>
+    <div class="card-body">
+        @if(User.FindFirst(x => x.Type == "Rol")?.Value == "ME")
+        {
+            <a asp-controller="DetallePedido" asp-action="Agregar" asp-route-IdPedido="@ViewBag.IdPedido" class="btn btn-primary btn-sm"><i class="bi bi-person-plus"></i> Nuevo Pedido</a>
+        }
+        <table class="table table-bordered border-success border border-2 table-hover" id="tableTipoProducto">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NombreProd)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Cantidad)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Observacion)
+                    </th>
+                    @if(User.FindFirst(x => x.Type == "Rol")?.Value == "ME")
+                    {
+                    <th>Acciones</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @item.NombreProd
+                    </td>
+                    <td>
+                        @item.Cantidad
+                    </td>
+                    <td>
+                        @item.Observacion
+                    </td>
+                        @if (User.FindFirst(x => x.Type == "Rol")?.Value == "ME")
+                        {
+                            <td>
+                                <a asp-area="" asp-controller="DetallePedido" asp-action="Editar" class="btn btn-success btn-sm" asp-route-IdPedido="@ViewBag.IdPedido" asp-route-Id="@item.IdDetallePed"><i class="bi bi-pencil-square"></i></a>
+                                <a asp-area="" asp-controller="DetallePedido" asp-action="Eliminar" class="btn btn-danger btn-sm" asp-route-IdPedido="@ViewBag.IdPedido" asp-route-Id="@item.IdDetallePed"><i class="bi bi-trash-fill"></i></a>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a asp-controller="Pedido" asp-action="Listado" class="btn btn-warning">Regresar a los Pedidos</a>
+    </div>
+</div>
+@section Scripts {
+    <script>
+$(document).ready(function() {
+    $('#tableTipoProducto').DataTable();
+});
+    </script>
+<script>
+    $(document).ready(function() {
+    $('#tableTipoProducto').DataTable({
+        "language": {
+            "url": "https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json"
+        };
+    });
+});
+</script>
+}

@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option csharp_namespace = "RestauranteAPI";
+package productos;
+
+service Productos {
+	rpc Listar(EmptyProd) returns(Productoss);
+	rpc Buscar(ProductoId) returns(Producto);
+	rpc Agregar(Producto) returns(RespuestaProd);
+	rpc Editar(Producto) returns(RespuestaProd);
+	rpc Eliminar(ProductoId) returns(RespuestaProd);
+}
+
+message EmptyProd {}
+
+message ProductoId {
+	string Id = 1;
+}
+
+message Producto {
+	string IdProd = 1;
+	string IdTipoProd = 2;
+	string NombreProd = 3;
+	string Precio = 4;
+	string NombreTipoProd = 5;
+}
+
+message Productoss {
+	repeated Producto Item = 1;
+}
+
+message RespuestaProd {
+	string Mensaje = 1;
+}

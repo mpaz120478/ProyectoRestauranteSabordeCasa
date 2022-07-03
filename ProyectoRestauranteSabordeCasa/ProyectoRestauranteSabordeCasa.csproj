@@ -1,0 +1,77 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DataAccess\**" />
+    <Content Remove="DataAccess\**" />
+    <EmbeddedResource Remove="DataAccess\**" />
+    <None Remove="DataAccess\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.46.0" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.46.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="4.1.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="..\RestauranteAPI\Protos\Cargo.proto" GrpcServices="Client">
+      <Link>Protos\Cargo.proto</Link>
+    </Protobuf>
+    <Protobuf Include="..\RestauranteAPI\Protos\Cliente.proto" GrpcServices="Client">
+      <Link>Protos\Cliente.proto</Link>
+    </Protobuf>
+    <Protobuf Include="..\RestauranteAPI\Protos\DetallePedido.proto" GrpcServices="Client">
+      <Link>Protos\DetallePedido.proto</Link>
+    </Protobuf>
+    <Protobuf Include="..\RestauranteAPI\Protos\Empleado.proto" GrpcServices="Client">
+      <Link>Protos\Empleado.proto</Link>
+    </Protobuf>
+    <Protobuf Include="..\RestauranteAPI\Protos\Login.proto" GrpcServices="Client">
+      <Link>Protos\Login.proto</Link>
+    </Protobuf>
+    <Protobuf Include="..\RestauranteAPI\Protos\Pedido.proto" GrpcServices="Client">
+      <Link>Protos\Pedido.proto</Link>
+    </Protobuf>
+    <Protobuf Include="..\RestauranteAPI\Protos\Producto.proto" GrpcServices="Client">
+      <Link>Protos\Producto.proto</Link>
+    </Protobuf>
+    <Protobuf Include="..\RestauranteAPI\Protos\TipoProducto.proto" GrpcServices="Client">
+      <Link>Protos\TipoProducto.proto</Link>
+    </Protobuf>
+    <Protobuf Include="..\RestauranteAPI\Protos\Usuario.proto" GrpcServices="Client">
+      <Link>Protos\Usuario.proto</Link>
+    </Protobuf>
+    <Protobuf Include="..\RestauranteAPI\Protos\Venta.proto" GrpcServices="Client">
+      <Link>Protos\Venta.proto</Link>
+    </Protobuf>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\DetallePedido\Agregar.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\DetallePedido\Editar.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\DetallePedido\Eliminar.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\DetallePedido\Listado.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

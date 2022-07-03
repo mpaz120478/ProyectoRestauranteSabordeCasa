@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option csharp_namespace = "RestauranteAPI";
+package tipoproductos;
+
+service TipoProductos {
+	rpc Listar(EmptyTip) returns(TipoProductoss);
+	rpc Buscar(TipoProductoId) returns(TipoProducto);
+	rpc Agregar(TipoProducto) returns(RespuestaTip);
+	rpc Editar(TipoProducto) returns(RespuestaTip);
+	rpc Eliminar(TipoProductoId) returns(RespuestaTip);
+}
+
+message EmptyTip {}
+
+message TipoProductoId {
+	string Id = 1;
+}
+
+message TipoProducto {
+	string IdTipoProd = 1;
+	string NombreTipoProd = 2;
+}
+
+message TipoProductoss {
+	repeated TipoProducto Item = 1;
+}
+
+message RespuestaTip {
+	string Mensaje = 1;
+}

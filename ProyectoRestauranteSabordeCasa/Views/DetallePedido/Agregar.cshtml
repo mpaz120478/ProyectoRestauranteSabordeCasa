@@ -1,0 +1,45 @@
+﻿@model ProyectoRestauranteSabordeCasa.Models.DetallePedidoModel
+
+@{
+    ViewData["Title"] = "Agregar";
+}
+
+<div class="container bg-light my-2 py-2 border border-1 border-success">
+    <h3 class="text-center fw-bold text-white fst-italic border py-2" style="background-color: #117A65">Registrar Datos del Pedido</h3>
+    <form asp-action="Agregar" asp-route-IdPedido="@ViewBag.IdPedido" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row my-2">
+            <div class="col-2">
+                <label asp-for="IdProd" class="control-label">Producto</label><br />
+                <select asp-for="IdProd" asp-items="@ViewBag.productos" class="form-select">
+                    <option value="-1">Seleccione:</option>
+                </select>
+                <span asp-validation-for="IdProd" class="text-danger"></span>
+                </div>
+            <div class="col-2">
+                <label asp-for="Cantidad" class="control-label"></label>
+                <input asp-for="Cantidad" class="form-control" type="text" />
+                <span asp-validation-for="Cantidad" class="text-danger"></span>
+            </div>
+            <div class="col-4">
+                <label asp-for="Observacion" class="control-label"></label>
+                <input asp-for="Observacion" class="form-control" type="textarea" />
+                <span asp-validation-for="Observacion" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row my-2">
+            <div class="col-2">
+                <input type="submit" value="Guardar" class="btn btn-primary"/>
+            </div>
+            <div class="col-2">
+                <a asp-action="Listado" asp-route-IdPedido="@ViewBag.IdPedido" class="btn btn-warning">Regresar al Listado</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>@ViewBag.mensaje</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

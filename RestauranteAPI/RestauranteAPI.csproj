@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Protos\Cargo.proto" />
+    <None Remove="Protos\Cliente.proto" />
+    <None Remove="Protos\DetallePedido.proto" />
+    <None Remove="Protos\Empleado.proto" />
+    <None Remove="Protos\Login.proto" />
+    <None Remove="Protos\Pedido.proto" />
+    <None Remove="Protos\Producto.proto" />
+    <None Remove="Protos\TipoProducto.proto" />
+    <None Remove="Protos\Usuario.proto" />
+    <None Remove="Protos\Venta.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\Cargo.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\Cliente.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\DetallePedido.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\Empleado.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\Login.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\Pedido.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\Producto.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\TipoProducto.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\Usuario.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\Venta.proto" GrpcServices="Server" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.21.2" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.40.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.47.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="4.1.0" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,31 @@
+syntax = "proto3";
+option csharp_namespace = "RestauranteAPI";
+package logins;
+
+service Login{
+	rpc Iniciar(Credencial) returns (UsuarioLog);
+	rpc Registrar(UsuarioReg) returns (Respuesta);
+}
+
+message Respuesta{
+	string mensaje = 1;
+	string registrado = 2;
+}
+
+message UsuarioLog {
+	string idUsuario = 1;
+	string idEmp = 2;
+	string NombreUsuario = 3;
+	string RolCargo = 4;
+}
+
+message UsuarioReg {
+	string DniEmp = 1;
+	string NombreUsuario = 2;
+	string ClaveUsuario = 3;
+}
+
+message Credencial {
+	string NombreUsuario = 1;
+	string ClaveUsuario = 2;
+}
